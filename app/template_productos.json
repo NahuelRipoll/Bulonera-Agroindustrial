@@ -1,0 +1,37 @@
+[
+  {
+    "nombre": "AMOLADORA UMI 180MM 2200W",
+    "descripcion": "Potente y duradera, ideal para trabajos de corte y desbaste",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://umi-herramientas.com.ar/wp/wp-content/uploads/2021/04/HU003_01-800x800.jpg"
+  },
+  {
+    "nombre": "Compresor 50 litros Gamma Select",
+    "descripcion": "Compresor de aire monofásico de alta presión y rendimiento. Ideal para pintar soplar, inflar, lavar o sopletear.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2025/12/G2854AR_00_web.jpg"
+  },
+  {
+    "nombre": "GABINETE DE HERRAMIENTAS 7 CAJONES WORKPRO (SIN HERRAMIENTAS)",
+    "descripcion": "Gabinete de herramientas con 7 cajones para organizar y almacenar tus herramientas de manera eficiente. Ideal para talleres y garajes.",
+    "rubro": "Herramientas manuales",
+    "activo": true,
+    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2025/12/G2853AR_00_web.jpg"
+  },
+  {
+    "nombre": "SOLDADORA INVERTER ESAB BANTAM 2.5",
+    "descripcion": "Soldadora inverter de alto rendimiento, ideal para soldar acero y otros materiales.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://d363suj4pdptk4.cloudfront.net/externalApps/c7efbbab-3f6a-497d-9dae-cbb24f5f4774/conversion/PIM/assets/142670"
+  },
+  {
+    "nombre": "ESMALTE SINTÉTICO 3EN1 WALL LINEA COMPLETA",
+    "descripcion": "Esmalte sintético de alta calidad, ideal para obtener acabados perfectos y persistentes en superficies metálicas y otras superficies.",
+    "rubro": "Pintureria",
+    "activo": true,
+    "imagen": "https://i0.wp.com/pinturaswall.com.ar/wp-content/uploads/2021/04/BRILUXNEO_MULTIACCION_3.jpg?fit=1907%2C2384&ssl=1"
+  }
+]
