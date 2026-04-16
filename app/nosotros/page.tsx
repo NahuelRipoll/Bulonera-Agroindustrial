@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Sobre Nosotros | Bulonera Agroindustrial",
@@ -39,23 +40,14 @@ export default function NosotrosPage() {
                 productos para que tu trabajo sea más eficiente y productivo.
               </p>
             </div>
-            <div className="bg-gray-100 rounded-2xl aspect-square flex items-center justify-center text-gray-400">
-              <div className="text-center p-8">
-                <svg
-                  className="w-24 h-24 mx-auto mb-4"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1}
-                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
-                  />
-                </svg>
-                <p className="text-sm">Foto del local</p>
-              </div>
+            <div className="relative rounded-2xl overflow-hidden aspect-square">
+              <Image
+                src="/local.jpeg"
+                alt="Foto del local"
+                fill
+                className="object-cover"
+                style={{ objectPosition: "center 15%" }}
+              />
             </div>
           </div>
 
