@@ -66,7 +66,6 @@ export async function POST(request: NextRequest) {
       const activoRaw = producto.activo;
       const activo =
         activoRaw === true ||
-        activoRaw === 1 ||
         (typeof activoRaw === "string" &&
           ["si", "sí", "true", "1", "yes"].includes(activoRaw.toLowerCase().trim()));
 

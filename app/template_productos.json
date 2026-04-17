@@ -1,26 +1,5 @@
 [
   {
-    "nombre": "AMOLADORA UMI 180MM 2200W",
-    "descripcion": "Potente y duradera, ideal para trabajos de corte y desbaste",
-    "rubro": "Herramientas de corte",
-    "activo": true,
-    "imagen": "https://umi-herramientas.com.ar/wp/wp-content/uploads/2021/04/HU003_01-800x800.jpg"
-  },
-  {
-    "nombre": "Compresor 50 litros Gamma Select",
-    "descripcion": "Compresor de aire monofásico de alta presión y rendimiento. Ideal para pintar soplar, inflar, lavar o sopletear.",
-    "rubro": "Máquinas eléctricas",
-    "activo": true,
-    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2025/12/G2854AR_00_web.jpg"
-  },
-  {
-    "nombre": "GABINETE DE HERRAMIENTAS 7 CAJONES WORKPRO (SIN HERRAMIENTAS)",
-    "descripcion": "Gabinete de herramientas con 7 cajones para organizar y almacenar tus herramientas de manera eficiente. Ideal para talleres y garajes.",
-    "rubro": "Herramientas manuales",
-    "activo": true,
-    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2025/12/G2853AR_00_web.jpg"
-  },
-  {
     "nombre": "SOLDADORA INVERTER ESAB BANTAM 2.5",
     "descripcion": "Soldadora inverter de alto rendimiento, ideal para soldar acero y otros materiales.",
     "rubro": "Máquinas eléctricas",
@@ -33,5 +12,124 @@
     "rubro": "Pintureria",
     "activo": true,
     "imagen": "https://i0.wp.com/pinturaswall.com.ar/wp-content/uploads/2021/04/BRILUXNEO_MULTIACCION_3.jpg?fit=1907%2C2384&ssl=1"
+  },
+  {
+    "nombre": "MARTILLO ELECTRONEUMÁTICO GAMMA G1955AR 1500W",
+    "descripcion": "Martillo SDS-Plus de 1500W y 6 J de energía de impacto con 3 modos de trabajo: perforar, perforar con percusión y cincelar. Sistema Vario-Lock para posicionamiento del cincel en 12 posiciones.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2024/11/G1955AR_00.jpg"
+  },
+  {
+    "nombre": "MARTILLO ELECTRONEUMÁTICO GAMMA G1954AR 1100W",
+    "descripcion": "Martillo SDS-Plus de 1100w y 4,5 J de energía de impacto para perforación y demolición en hormigón. 3 modos de trabajo: perforar, perforar con percusión y cincelar.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2024/11/G1954AR_00.jpg"
+  },
+  {
+    "nombre": "TALADRO ATORNILLADOR A BATERÍA GAMMA G12405/2AR",
+    "descripcion": "Taladro atornillador inalámbrico con percusión de 60 Nm, 2 velocidades mecánicas y mandril de 13 mm. Incluye 2 baterías de 20V/2000 mAh y cargador rápido.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2024/09/G12405-2AR-scaled-1.jpg"
+  },
+  {
+    "nombre": "FRESADORA DE MANO BOSCH GKF 550",
+    "descripcion": "Fresadora compacta de 550W y 33.000 RPM para molduras y cantos. Ajuste de profundidad preciso por cremallera, base de policarbonato transparente e incluye guía paralela.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/316066-54/application-image/1434x828/fresadora-pro-gkf-550-06016a00h0.png"
+  },
+  {
+    "nombre": "SIERRA CIRCULAR BOSCH GKS 130",
+    "descripcion": "Sierra circular de 1300W con disco de 184 mm, profundidad de corte de 64 mm y bisel hasta 45°. Potente y precisa para cortes en madera, MDF y OSB.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/407415-54/application-image/full/sierras-pro-gks-130-06016c30h0.png"
+  },
+  {
+    "nombre": "AMOLADORA BOSCH GWS 28-180",
+    "descripcion": "Amoladora angular de 2800W para disco de 180 mm, la más liviana en su categoría de potencia. Sistema de refrigeración mejorado para mayor durabilidad del motor en trabajos intensivos.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/359851-54/application-image/full/amoladora-pro-gws-28-180-06018f50h0.png"
+  },
+  {
+    "nombre": "AMOLADORA BOSCH GWS 25-230",
+    "descripcion": "Amoladora angular de 2500W para disco de 230 mm, la más liviana en su clase con la mejor relación potencia/peso. Ideal para corte y desbaste de materiales pesados.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/uy/es/ocsmedia/359866-54/application-image/full/amoladora-pro-gws-25-230-06018f40e0.png"
+  },
+  {
+    "nombre": "AMOLADORA BOSCH GWS 2200-180",
+    "descripcion": "Amoladora angular de 2200W para disco de 180 mm, la más liviana en su segmento. Motor de alto rendimiento con flujo de aire optimizado para mayor vida útil.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/359857-54/application-image/full/amoladora-pro-gws-2200-180-06018f10h0.png"
+  },
+  {
+    "nombre": "AMOLADORA BOSCH GWS 770",
+    "descripcion": "Amoladora angular compacta de 770W para disco de 115 mm y 12.000 RPM. Diseño ergonómico renovado para desbaste y corte en metal de uso cotidiano.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/567967-54/application-image/full/amoladora-pro-gws-770-06013980h0.png"
+  },
+  {
+    "nombre": "AMOLADORA BOSCH GWS 850",
+    "descripcion": "Amoladora angular de 850W para disco de 115 mm, robusta y compacta para desbaste, esmerilado y corte en metal. Empuñadura ergonómica para un control seguro y cómodo.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/293815-54/application-image/1434x828/amoladora-pro-gws-850-06013775h0.png"
+  },
+  {
+    "nombre": "HIDROLAVADORA GAMMA PRO WASH 1500",
+    "descripcion": "Hidrolavadora de 1200W con 90 bar de presión y caudal de 5 L/min. Sistema AutoStop que apaga el motor al soltar el gatillo. Incluye manguera de 3 m y accesorios.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2024/09/G2516AR-5-1-scaled-1.jpg"
+  },
+  {
+    "nombre": "HIDROLAVADORA GAMMA PREMIUM WASH 3000",
+    "descripcion": "Hidrolavadora profesional de 2500W con 185 bar de presión y 9 L/min, fabricada en Italia. Incluye lanza espuma, manguera de 6 m con carretel y sistema AutoStop.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.gammaherramientas.com.ar/web/wp-content/uploads/2024/09/G2520AR-4-scaled-1.jpg"
+  },
+  {
+    "nombre": "HIDROLAVADORA BOSCH GHP 180",
+    "descripcion": "Hidrolavadora compacta de 83 bar con doble filtración para mayor durabilidad. Incluye lanza turbo, lanza abanico y aplicador de detergente integrado de 450 ml.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/458072-54/application-image/full/hidrolavadora-pro-ghp-180-0600910ch0.png"
+  },
+  {
+    "nombre": "HIDROLAVADORA BOSCH GHP 4-50",
+    "descripcion": "Hidrolavadora profesional de 115 bar de trabajo y 173 bar máximo, con bomba cuádruple y motor de inducción para limpieza continua e intensa. Manguera con armadura de acero y cebado automático.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/ar/es/ocsmedia/458071-54/application-image/full/hidrolavadora-ghp-4-50-0600910fh0.png"
+  },
+  {
+    "nombre": "LLAVE DE IMPACTO INALÁMBRICA BOSCH GDS 18V-1000",
+    "descripcion": "Llave de impacto BITURBO Brushless de 18V con 1000 Nm de torque y 1600 Nm inverso, para fijaciones M10-M24 en estructuras metálicas. Compatible con toda la plataforma Bosch 18V.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": "https://www.bosch-professional.com/es/es/ocsmedia/376029-54/application-image/full/atornillador-de-impacto-a-bateria-pro-gds-18v-1000-06019j8300.png"
+  },
+  {
+    "nombre": "LLAVE DE IMPACTO INALÁMBRICA WORKPRO W125115NT",
+    "descripcion": "Llave de impacto 20V brushless de 500 Nm de torque máximo, 2500 RPM y cuadro de 1/2\". Luz LED integrada y clip para cinturón. Se vende sin batería ni cargador.",
+    "rubro": "Máquinas eléctricas",
+    "activo": true,
+    "imagen": null
+  },
+  {
+    "nombre": "SIERRA INGLETADORA TELESCÓPICA SKIL 3311",
+    "descripcion": "Sierra ingletadora telescópica de 1800W con disco de 254 mm, inglete y bisel hasta 45° en ambas direcciones. Brazos telescópicos con apertura de 115 cm para piezas de gran formato.",
+    "rubro": "Herramientas de corte",
+    "activo": true,
+    "imagen": "https://somosrex.com/media/catalog/product/F/0/F0123311JB-000_01.jpg"
   }
 ]

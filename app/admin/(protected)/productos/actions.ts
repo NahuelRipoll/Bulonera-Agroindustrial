@@ -122,3 +122,24 @@ export async function eliminarProducto(id: string, imagen_url: string) {
   revalidatePath("/catalogo");
   revalidatePath("/");
 }
+
+export async function eliminarProductos(
+  ids: string[],
+  imagen_urls: string[]
+) {
+  const supabase = await requireAuth();
+
+  const paths = imagen_urls
+    .map(extractStoragePath)
+    .filter((p): p is string => p !== null);
+
+  if (paths.length > 0) {
+    await supabase.storage.from("imagenes").remove(paths);
+  }
+
+  await supabase.from("productos").delete().in("id", ids);
+
+  revalidatePath("/admin/productos");
+  revalidatePath("/catalogo");
+  revalidatePath("/");
+}
