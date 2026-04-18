@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
+
+// Placeholder gris 1×1px para imágenes remotas mientras cargan
+const BLUR_PLACEHOLDER =
+  "data:image/gif;base64,R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==";
 
 const PHONE_WA = "5492634564130";
 const ITEMS_PER_PAGE = 12;
@@ -28,36 +32,75 @@ interface Props {
 }
 
 export default function CatalogoCliente({ rubros, productos }: Props) {
+  const router = useRouter();
   const searchParams = useSearchParams();
-  const [rubroSeleccionado, setRubroSeleccionado] = useState<string | null>(
-    searchParams.get("rubro")
-  );
+
+  // Filtros derivados de la URL — compartibles y navegables
+  const rubroSeleccionado = searchParams.get("rubro");
+  const pagina = Math.max(1, parseInt(searchParams.get("page") || "1", 10));
+
+  // Búsqueda local con debounce (no va a la URL para no contaminar el historial)
   const [busqueda, setBusqueda] = useState("");
+  const [busquedaDeferida, setBusquedaDeferida] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [pagina, setPagina] = useState(1);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  // Actualiza el valor de búsqueda usado para filtrar con 300ms de debounce
   useEffect(() => {
-    setRubroSeleccionado(searchParams.get("rubro"));
-  }, [searchParams]);
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      setBusquedaDeferida(busqueda);
+    }, 300);
+    return () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    };
+  }, [busqueda]);
 
-  useEffect(() => {
-    setPagina(1);
-  }, [rubroSeleccionado, busqueda]);
+  function handleRubroChange(rubroId: string | null) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (rubroId) {
+      params.set("rubro", rubroId);
+    } else {
+      params.delete("rubro");
+    }
+    params.delete("page"); // Siempre volver a página 1 al cambiar rubro
+    router.push(`/catalogo?${params.toString()}`);
+    setSidebarOpen(false);
+  }
+
+  function handlePageChange(nueva: number) {
+    const params = new URLSearchParams(searchParams.toString());
+    if (nueva === 1) {
+      params.delete("page");
+    } else {
+      params.set("page", String(nueva));
+    }
+    router.push(`/catalogo?${params.toString()}`);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function limpiarFiltros() {
+    setBusqueda("");
+    setBusquedaDeferida("");
+    router.push("/catalogo");
+  }
 
   const productosFiltrados = productos.filter((p) => {
     const matchRubro =
       !rubroSeleccionado || p.rubro_id === rubroSeleccionado;
     const matchBusqueda =
-      !busqueda ||
-      p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-      (p.descripcion || "").toLowerCase().includes(busqueda.toLowerCase());
+      !busquedaDeferida ||
+      p.nombre.toLowerCase().includes(busquedaDeferida.toLowerCase()) ||
+      (p.descripcion || "").toLowerCase().includes(busquedaDeferida.toLowerCase());
     return matchRubro && matchBusqueda;
   });
 
   const totalPaginas = Math.ceil(productosFiltrados.length / ITEMS_PER_PAGE);
+  // Clampear por si los filtros reducen el total de páginas
+  const paginaEfectiva = Math.min(pagina, Math.max(1, totalPaginas));
   const productosPagina = productosFiltrados.slice(
-    (pagina - 1) * ITEMS_PER_PAGE,
-    pagina * ITEMS_PER_PAGE
+    (paginaEfectiva - 1) * ITEMS_PER_PAGE,
+    paginaEfectiva * ITEMS_PER_PAGE
   );
 
   const rubroActual = rubros.find((r) => r.id === rubroSeleccionado);
@@ -92,10 +135,7 @@ export default function CatalogoCliente({ rubros, productos }: Props) {
           <ul className="space-y-1">
             <li>
               <button
-                onClick={() => {
-                  setRubroSeleccionado(null);
-                  setSidebarOpen(false);
-                }}
+                onClick={() => handleRubroChange(null)}
                 className={`w-full text-left px-4 py-2.5 rounded-lg transition-colors text-sm ${
                   !rubroSeleccionado
                     ? "bg-orange-500 text-white font-semibold"
@@ -108,10 +148,7 @@ export default function CatalogoCliente({ rubros, productos }: Props) {
             {rubros.map((rubro) => (
               <li key={rubro.id}>
                 <button
-                  onClick={() => {
-                    setRubroSeleccionado(rubro.id);
-                    setSidebarOpen(false);
-                  }}
+                  onClick={() => handleRubroChange(rubro.id)}
                   className={`w-full text-left px-4 py-2.5 rounded-lg transition-colors text-sm ${
                     rubroSeleccionado === rubro.id
                       ? "bg-orange-500 text-white font-semibold"
@@ -140,10 +177,7 @@ export default function CatalogoCliente({ rubros, productos }: Props) {
             </p>
             {(rubroSeleccionado || busqueda) && (
               <button
-                onClick={() => {
-                  setRubroSeleccionado(null);
-                  setBusqueda("");
-                }}
+                onClick={limpiarFiltros}
                 className="text-sm text-orange-500 hover:underline"
               >
                 Limpiar filtros
@@ -208,6 +242,9 @@ export default function CatalogoCliente({ rubros, productos }: Props) {
                             src={producto.imagen_url}
                             alt={producto.nombre}
                             fill
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                            placeholder="blur"
+                            blurDataURL={BLUR_PLACEHOLDER}
                             className="object-cover"
                           />
                         ) : (
@@ -284,18 +321,18 @@ export default function CatalogoCliente({ rubros, productos }: Props) {
               {totalPaginas > 1 && (
                 <div className="flex items-center justify-center gap-2 mt-10">
                   <button
-                    onClick={() => setPagina((p) => Math.max(1, p - 1))}
-                    disabled={pagina === 1}
+                    onClick={() => handlePageChange(paginaEfectiva - 1)}
+                    disabled={paginaEfectiva === 1}
                     className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium disabled:opacity-40 hover:bg-gray-100 transition-colors"
                   >
                     ← Anterior
                   </button>
                   <span className="text-sm text-gray-600 px-2">
-                    Página {pagina} de {totalPaginas}
+                    Página {paginaEfectiva} de {totalPaginas}
                   </span>
                   <button
-                    onClick={() => setPagina((p) => Math.min(totalPaginas, p + 1))}
-                    disabled={pagina === totalPaginas}
+                    onClick={() => handlePageChange(paginaEfectiva + 1)}
+                    disabled={paginaEfectiva === totalPaginas}
                     className="px-4 py-2 rounded-lg border border-gray-300 text-sm font-medium disabled:opacity-40 hover:bg-gray-100 transition-colors"
                   >
                     Siguiente →

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { createClient } from "@/lib/supabase-server";
 import CatalogoCliente from "./CatalogoCliente";
 
+export const revalidate = 3600; // Re-fetch desde Supabase máximo 1 vez por hora
+
 export const metadata: Metadata = {
   title: "Catálogo de Productos | Bulonera Agroindustrial",
   description:

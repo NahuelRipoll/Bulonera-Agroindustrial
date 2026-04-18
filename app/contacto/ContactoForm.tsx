@@ -11,10 +11,12 @@ export default function ContactoForm() {
     mensaje: "",
   });
   const [estado, setEstado] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setEstado("loading");
+    setErrorMsg(null);
     try {
       const res = await fetch("/api/contacto", {
         method: "POST",
@@ -25,9 +27,18 @@ export default function ContactoForm() {
         setEstado("success");
         setForm({ nombre: "", empresa: "", email: "", telefono: "", mensaje: "" });
       } else {
+        const data = await res.json().catch(() => ({}));
+        if (res.status >= 500) {
+          setErrorMsg(
+            "El servidor tuvo un problema. Si el error persiste, contactanos por WhatsApp."
+          );
+        } else {
+          setErrorMsg(data.error || "Verificá los datos e intentá de nuevo.");
+        }
         setEstado("error");
       }
     } catch {
+      setErrorMsg("Sin conexión. Verificá tu internet e intentá de nuevo.");
       setEstado("error");
     }
   }
@@ -127,10 +138,20 @@ export default function ContactoForm() {
                     className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 resize-none"
                   />
                 </div>
-                {estado === "error" && (
-                  <p className="text-red-600 text-sm">
-                    Hubo un error. Por favor intentá de nuevo.
-                  </p>
+                {estado === "error" && errorMsg && (
+                  <div className="bg-red-50 border border-red-200 rounded-lg px-4 py-3 flex items-start gap-3">
+                    <span className="text-red-500 mt-0.5 flex-shrink-0">⚠</span>
+                    <div>
+                      <p className="text-red-700 text-sm">{errorMsg}</p>
+                      <button
+                        type="button"
+                        onClick={() => setEstado("idle")}
+                        className="mt-1 text-xs text-orange-500 hover:underline"
+                      >
+                        Reintentar
+                      </button>
+                    </div>
+                  </div>
                 )}
                 <button
                   type="submit"
