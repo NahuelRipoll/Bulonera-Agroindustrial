@@ -43,6 +43,7 @@ export default function CatalogoCliente({ rubros, productos }: Props) {
   const [busqueda, setBusqueda] = useState("");
   const [busquedaDeferida, setBusquedaDeferida] = useState("");
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [productoSeleccionado, setProductoSeleccionado] = useState<Producto | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Actualiza el valor de búsqueda usado para filtrar con 300ms de debounce
@@ -245,7 +246,7 @@ export default function CatalogoCliente({ rubros, productos }: Props) {
                             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                             placeholder="blur"
                             blurDataURL={BLUR_PLACEHOLDER}
-                            className="object-cover"
+                            className="object-contain p-2"
                           />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center">
