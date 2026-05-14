@@ -143,3 +143,61 @@ export async function eliminarProductos(
   revalidatePath("/catalogo");
   revalidatePath("/");
 }
+
+export async function toggleTendenciaProducto(
+  id: string,
+  valorActual: boolean
+): Promise<{ ok: boolean; error?: string }> {
+  const supabase = await requireAuth();
+
+  if (valorActual) {
+    const { error } = await supabase
+      .from("productos")
+      .update({ tendencia: false, tendencia_orden: null })
+      .eq("id", id);
+
+    if (error) return { ok: false, error: error.message };
+
+    revalidatePath("/admin/productos");
+    revalidatePath("/");
+    return { ok: true };
+  }
+
+  const { count, error: countError } = await supabase
+    .from("productos")
+    .select("id", { count: "exact", head: true })
+    .eq("tendencia", true);
+
+  if (countError) return { ok: false, error: countError.message };
+
+  if ((count ?? 0) >= 6) {
+    return {
+      ok: false,
+      error: "Ya hay 6 productos en tendencia. Quitá uno antes de agregar otro.",
+    };
+  }
+
+  const { data: ultimo } = await supabase
+    .from("productos")
+    .select("tendencia_orden")
+    .eq("tendencia", true)
+    .order("tendencia_orden", { ascending: false, nullsFirst: false })
+    .limit(1)
+    .maybeSingle();
+
+  const siguienteOrden =
+    typeof ultimo?.tendencia_orden === "number"
+      ? ultimo.tendencia_orden + 1
+      : 1;
+
+  const { error } = await supabase
+    .from("productos")
+    .update({ tendencia: true, tendencia_orden: siguienteOrden })
+    .eq("id", id);
+
+  if (error) return { ok: false, error: error.message };
+
+  revalidatePath("/admin/productos");
+  revalidatePath("/");
+  return { ok: true };
+}

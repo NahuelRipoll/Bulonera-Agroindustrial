@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-
-const geist = Geist({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Bulonera Agroindustrial",
@@ -20,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={geist.className}>
+      <body>
         <Navbar />
         <main className="min-h-screen">{children}</main>
         <Footer />

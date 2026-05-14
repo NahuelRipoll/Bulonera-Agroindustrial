@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { createClient } from "@/lib/supabase-server";
 import { crearRubro, eliminarRubro, toggleDestacado } from "./actions";
 import DeleteButton from "@/components/DeleteButton";

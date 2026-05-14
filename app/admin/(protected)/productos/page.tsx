@@ -14,6 +14,13 @@ export default async function AdminProductosPage() {
       <div className="flex items-center justify-between mb-8">
         <h1 className="text-2xl font-bold">Productos</h1>
         <div className="flex items-center gap-3">
+          <a
+            href="/api/admin/productos/descargar"
+            download
+            className="bg-white border border-gray-300 hover:border-gray-400 text-gray-700 px-5 py-2.5 rounded-lg font-semibold transition-colors text-sm"
+          >
+            Descargar JSON
+          </a>
           <Link
             href="/admin/productos/importar"
             className="bg-white border border-gray-300 hover:border-gray-400 text-gray-700 px-5 py-2.5 rounded-lg font-semibold transition-colors text-sm"
